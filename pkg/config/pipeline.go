@@ -56,6 +56,7 @@ type PipelineConfig struct {
 
 	Info     *livekit.EgressInfo `yaml:"-"`
 	Manifest *Manifest           `yaml:"-"`
+	Webhook  string              `yaml:"-"`
 }
 
 type SourceConfig struct {

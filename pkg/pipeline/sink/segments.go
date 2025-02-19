@@ -192,6 +192,10 @@ func (s *SegmentSink) handleClosedSegment(update SegmentUpdate) {
 			s.manifestPlaylist.AddSegment(segmentStoragePath, location)
 		}
 		s.infoLock.Unlock()
+
+		if s.conf.Webhook != "" {
+			fmt.Printf("webhook: %s, location: %s, size: %d, path: %s\n", s.conf.Webhook, location, size, segmentStoragePath)
+		}
 	}()
 }
 

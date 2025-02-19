@@ -60,6 +60,9 @@ func main() {
 					&cli.StringFlag{
 						Name: "config",
 					},
+					&cli.StringFlag{
+						Name:  "webhook",
+					},
 				},
 				Action: runHandler,
 				Hidden: true,
@@ -172,6 +175,11 @@ func runHandler(c *cli.Context) error {
 	conf, err := config.NewPipelineConfig(configBody, req)
 	if err != nil {
 		return err
+	}
+
+	webhook := c.String("webhook")
+	if webhook != "" {
+		conf.Webhook = webhook
 	}
 
 	logger.Debugw("handler launched")

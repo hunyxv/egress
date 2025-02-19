@@ -31,11 +31,11 @@ import (
 	"github.com/livekit/psrpc"
 )
 
-type Handler struct {
+type Handlxer struct {
 	ipc.UnimplementedEgressHandlerServer
 
 	conf             *config.PipelineConfig
-	controller       *pipeline.Controller
+	controller       *pipeline.x
 	rpcServer        rpc.EgressHandlerServer
 	ipcHandlerServer *grpc.Server
 	ipcServiceClient ipc.EgressServiceClient
