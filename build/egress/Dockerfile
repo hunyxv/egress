@@ -31,8 +31,9 @@ ENV PATH="/usr/local/go/bin:${PATH}"
 COPY go.mod .
 COPY go.sum .
 # 写入go代理到 go env
-RUN go env -w GOPROXY=https://goproxy.cn,direct
-RUN go mod download
+RUN go env -w GO111MODULE=on && \
+    go env -w GOPROXY=https://goproxy.cn,direct && \
+    go mod download
 
 # copy source
 COPY cmd/ cmd/
