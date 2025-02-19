@@ -22,7 +22,7 @@ ENV TARGETPLATFORM=${TARGETPLATFORM}
 WORKDIR /workspace
 
 # install go
-RUN wget https://studygolang.com/dl/golang/go1.23.1.linux-{TARGETARCH}.tar.gz && \
+RUN wget https://studygolang.com/dl/golang/go1.23.1.linux-${TARGETARCH}.tar.gz && \
     rm -rf /usr/local/go && \
     tar -C /usr/local -xzf go1.23.1.linux-${TARGETARCH}.tar.gz
 ENV PATH="/usr/local/go/bin:${PATH}"
