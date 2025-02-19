@@ -16,6 +16,7 @@ package handler
 
 import (
 	"context"
+	"fmt"
 	"path"
 
 	"github.com/frostbyte73/core"
@@ -31,11 +32,11 @@ import (
 	"github.com/livekit/psrpc"
 )
 
-type Handlxer struct {
+type Handler struct {
 	ipc.UnimplementedEgressHandlerServer
 
 	conf             *config.PipelineConfig
-	controller       *pipeline.x
+	controller       *pipeline.Controller
 	rpcServer        rpc.EgressHandlerServer
 	ipcHandlerServer *grpc.Server
 	ipcServiceClient ipc.EgressServiceClient
@@ -111,6 +112,10 @@ func (h *Handler) Run() {
 		Metrics:  m,
 		Info:     res,
 	})
+	// 写入webhook
+	if h.conf.Webhook != "" {
+		fmt.Printf("webhook: %s, egress_id: %s, metrics: %s, info: %v\n", h.conf.Webhook, h.conf.Info.EgressId, m, res)
+	}
 }
 
 func (h *Handler) Kill() {

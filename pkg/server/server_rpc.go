@@ -125,6 +125,7 @@ func (s *Server) launchProcess(req *rpc.StartEgressRequest, info *livekit.Egress
 		"run-handler",
 		"--config", string(confString),
 		"--request", string(reqString),
+		"--webhook", s.conf.Webhook,
 	)
 	cmd.Dir = "/"
 

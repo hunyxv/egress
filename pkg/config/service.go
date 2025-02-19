@@ -52,6 +52,7 @@ type ServiceConfig struct {
 	TemplatePort     int `yaml:"template_port"`      // room composite template server port
 	PrometheusPort   int `yaml:"prometheus_port"`    // prometheus handler port
 	DebugHandlerPort int `yaml:"debug_handler_port"` // egress debug handler port
+	Webhook          string `yaml:"webhook"`          // webhook url
 
 	*CPUCostConfig `yaml:"cpu_cost"` // CPU costs for the different egress types
 }
